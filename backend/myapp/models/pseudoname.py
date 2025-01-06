@@ -1,0 +1,1 @@
+"""Model for pseudo names for Owner of portfolio."""
