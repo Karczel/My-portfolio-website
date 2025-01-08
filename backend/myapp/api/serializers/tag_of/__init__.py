@@ -1,0 +1,3 @@
+from .illustration_tag_serializer import IllustrationTagSerializer
+from .repository_tag_serializer import RepositoryTagSerializer
+from .video_tag_serializer import VideoTagSerializer

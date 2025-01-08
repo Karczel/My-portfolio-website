@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/My-portfolio-website.iml" filepath="$PROJECT_DIR$/.idea/My-portfolio-website.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../RentHub-Connect/.idea/RentHub-Connect.iml" filepath="$PROJECT_DIR$/../RentHub-Connect/.idea/RentHub-Connect.iml" />
     </modules>
   </component>
 </project>
