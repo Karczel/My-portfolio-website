@@ -1,0 +1,3 @@
+from .illustration_tag_view import IllustrationTagViewSet
+from .repository_tag_view import RepositoryTagViewSet
+from .video_tag_view import VideoTagViewSet
