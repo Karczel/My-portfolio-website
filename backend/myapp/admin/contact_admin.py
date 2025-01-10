@@ -5,3 +5,5 @@ class ContactAdmin(admin.ModelAdmin):
     """
     Admin configuration for the Contact model.
     """
+    search_fields = ['platform']
+

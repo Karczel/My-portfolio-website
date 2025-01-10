@@ -8,6 +8,7 @@ class Illustration(models.Model):
     Represents illustrations that is part of the Owner's portfolio.
     """
     image = models.ImageField()
+    name = models.TextField(blank=True, null=True)
     desc = models.TextField(blank=True, null=True)
 
     def __str__(self):
