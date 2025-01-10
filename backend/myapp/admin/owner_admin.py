@@ -7,3 +7,5 @@ class OwnerAdmin(admin.ModelAdmin):
     """
     list_display = ('username', 'email', 'first_name', 'last_name', 'quote', 'about_me', 'location', 'profile_image',
                     'resume', 'requirements')
+    exclude = ('password', 'is_staff', 'is_active', 'is_superuser', 'last_login', 'date_joined', 'groups', 'user_permissions')
+    search_fields = ('username', 'email', 'first_name', 'last_name')

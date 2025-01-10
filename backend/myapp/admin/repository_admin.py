@@ -5,3 +5,4 @@ class RepositoryAdmin(admin.ModelAdmin):
     """
     Admin configuration for the Repository model.
     """
+    search_fields = ['name']

@@ -16,7 +16,6 @@ class Skill(models.Model):
                                 ('additional', 'Additional')
                             ],
                             default='main')
-    image = models.ImageField()
 
     def __str__(self):
         return self.skill
