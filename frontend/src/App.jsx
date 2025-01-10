@@ -2,17 +2,45 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 function App() {
-  const [ownersData, setOwnersData] = useState([]); // State to store fetched data
-  const [loading, setLoading] = useState(true); // State to indicate loading
-  const [error, setError] = useState(null); // State to handle errors
+  // State to store data for each endpoint
+  const [data, setData] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const endpoint = `${import.meta.env.VITE_API_URL}/owners/`;
+  const endpoints = {
+    owners: `${import.meta.env.VITE_API_URL}/owners/`,
+    activities: `${import.meta.env.VITE_API_URL}/activities/`,
+    contacts: `${import.meta.env.VITE_API_URL}/contacts/`,
+    illustrations: `${import.meta.env.VITE_API_URL}/illustrations/`,
+    pseudo_names: `${import.meta.env.VITE_API_URL}/pseudo_names/`,
+    repositories: `${import.meta.env.VITE_API_URL}/repositories/`,
+    skills: `${import.meta.env.VITE_API_URL}/skills/`,
+    tags: `${import.meta.env.VITE_API_URL}/tags/`,
+    videos: `${import.meta.env.VITE_API_URL}/videos/`,
+    activity_images: `${import.meta.env.VITE_API_URL}/activity_images/`,
+    repository_images: `${import.meta.env.VITE_API_URL}/repository_images/`,
+    illustration_tags: `${import.meta.env.VITE_API_URL}/illustration_tags/`,
+    repository_tags: `${import.meta.env.VITE_API_URL}/repository_tags/`,
+    video_tags: `${import.meta.env.VITE_API_URL}/video_tags/`,
+  };
 
   const fetchData = async () => {
     try {
-      console.log('Fetching...');
-      const response = await axios.get(endpoint);
-      setOwnersData(response.data); // Update state with fetched data
+      const promises = Object.entries(endpoints).map(async ([key, url]) => {
+        const response = await axios.get(url);
+        return { key, data: response.data };
+      });
+
+      const results = await Promise.all(promises);
+
+      // Map results into a key-value pair for the state
+      const newData = results.reduce((acc, { key, data }) => {
+        acc[key] = data;
+        return acc;
+      }, {});
+
+      setData(newData); // Update state with all fetched data
+
     } catch (err) {
       setError(err.message); // Handle errors
     } finally {
@@ -28,14 +56,19 @@ function App() {
   if (error) return <p>Error: {error}</p>; // Show error state
 
   return (
-    <>
-      <ul>
-        {ownersData.results?.map((owner) => (
-          <li key={owner.id}>{owner.username || 'No username'}</li>
-        ))}
-      </ul>
-    </>
-  )
+    <div>
+      {Object.entries(data).map(([key, value]) => (
+        <div key={key}>
+          <h2>{key.charAt(0).toUpperCase() + key.slice(1)}</h2>
+          <ul>
+            {value.results?.map((item) => (
+              <li key={item.id}>{item.name || item.username || 'No data'}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  );
 }
 
 export default App
