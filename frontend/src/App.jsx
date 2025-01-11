@@ -1,5 +1,9 @@
+// Data from api
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+
+// components
+import SectionsSidebar from "@/components/SectionsSidebar";
 
 function App() {
   // State to store data for each endpoint
@@ -67,6 +71,9 @@ function App() {
           </ul>
         </div>
       ))}
+      <>
+      <SectionsSidebar/>
+      </>
     </div>
   );
 }
