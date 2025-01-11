@@ -21,6 +21,8 @@ export default function SectionsSidebar() {
     setOpen(newOpen);
     if (!newOpen && mode === 'A') {
         setMode('B');
+      } else if (mode === 'B'){
+        setMode('A');
       }
   };
 

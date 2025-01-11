@@ -3,6 +3,9 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 // components
+import Container from '@mui/material/Container';
+
+// custom components
 import SectionsSidebar from "@/components/SectionsSidebar";
 import SectionsButton from './components/SectionsButton';
 
@@ -63,6 +66,21 @@ function App() {
 
   return (
     <div>
+      <>
+      <SectionsSidebar/>
+      </>
+      <>
+      <div
+  style={{
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    overflow: 'auto',
+    maxHeight: '100vh',
+    width: '60vw',
+    maxWidth: '90vw',
+  }}>
       {Object.entries(data).map(([key, value]) => (
         <div key={key}>
           <h2>{key.charAt(0).toUpperCase() + key.slice(1)}</h2>
@@ -73,8 +91,7 @@ function App() {
           </ul>
         </div>
       ))}
-      <>
-      <SectionsSidebar/>
+      </div>
       </>
     </div>
   );
