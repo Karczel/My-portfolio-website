@@ -4,12 +4,14 @@ import axios from 'axios'
 
 // components
 import SectionsSidebar from "@/components/SectionsSidebar";
+import SectionsButton from './components/SectionsButton';
 
 function App() {
   // State to store data for each endpoint
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  
 
   const endpoints = {
     owners: `${import.meta.env.VITE_API_URL}/owners/`,

@@ -10,6 +10,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import SectionsButton from './SectionsButton';
 
 export default function SectionsSidebar() {
   const [open, setOpen] = React.useState(false);
@@ -50,7 +51,8 @@ export default function SectionsSidebar() {
 
   return (
     <div>
-      <Button onClick={toggleDrawer(true)}>Open drawer</Button>
+        <SectionsButton association={toggleDrawer}/>
+      {/* <Button onClick={toggleDrawer(true)}>Open drawer</Button> */}
       <Drawer open={open} onClose={toggleDrawer(false)}>
         {DrawerList}
       </Drawer>
