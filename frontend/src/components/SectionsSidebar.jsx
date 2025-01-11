@@ -14,9 +14,14 @@ import SectionsButton from './SectionsButton';
 
 export default function SectionsSidebar() {
   const [open, setOpen] = React.useState(false);
+  // Sidebar button modes
+  const [mode, setMode] = React.useState('A');
 
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
+    if (!newOpen && mode === 'A') {
+        setMode('B');
+      }
   };
 
   const DrawerList = (
@@ -51,9 +56,8 @@ export default function SectionsSidebar() {
 
   return (
     <div>
-        <SectionsButton association={toggleDrawer}/>
-      {/* <Button onClick={toggleDrawer(true)}>Open drawer</Button> */}
-      <Drawer open={open} onClose={toggleDrawer(false)}>
+      <SectionsButton mode = {mode} setMode={setMode} association={toggleDrawer}/>
+      <Drawer open={open} onClose={toggleDrawer(false)} sx={{zIndex: 999,}}>
         {DrawerList}
       </Drawer>
     </div>
