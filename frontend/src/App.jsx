@@ -3,11 +3,12 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 // components
-import Container from '@mui/material/Container';
+import Avatar from '@mui/material/Avatar';
 
 // custom components
 import SectionsSidebar from "@/components/SectionsSidebar";
 import SectionsButton from './components/SectionsButton';
+import Profile from './components/Profile';
 
 function App() {
   // State to store data for each endpoint
@@ -80,9 +81,14 @@ function App() {
     maxHeight: '100vh',
     width: '60vw',
     maxWidth: '90vw',
-    padding: '1rem',
+    padding: '20rem',
     boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.5)',
   }}>
+    <div>
+      <Profile value={data.owners}/>
+    </div>
+
+    {/* Data query test */}
       {Object.entries(data).map(([key, value]) => (
         <div key={key}>
           <h2>{key.charAt(0).toUpperCase() + key.slice(1)}</h2>
