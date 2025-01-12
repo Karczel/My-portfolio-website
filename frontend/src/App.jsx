@@ -89,11 +89,16 @@ function App() {
   }}>
     <div>
       <Profile owners={data.owners} skills={data.skills} tags={data.tags} skillTags={data.skill_tags} contacts={data.contacts}/>
-      {/* Software Projects */}
+      {/* Software Projects(Repository) */}
+
+      {/* Arts */}
+
+      {/* Activities */}
+
     </div>
 
     {/* Data query test */}
-      {Object.entries(data).map(([key, value]) => (
+      {/* {Object.entries(data).map(([key, value]) => (
         <div key={key}>
           <h2>{key.charAt(0).toUpperCase() + key.slice(1)}</h2>
           <ul>
@@ -102,7 +107,7 @@ function App() {
             ))}
           </ul>
         </div>
-      ))}
+      ))} */}
       </div>
       </>
     </div>
