@@ -1,0 +1,45 @@
+/* Container styles */
+.icon-item {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Link and icon styles */
+  .icon-link {
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .icon-image {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s ease;
+  }
+  
+  .icon-link:hover .icon-image {
+    transform: scale(1.1); /* Slightly enlarge the icon on hover */
+  }
+  
+  /* Hover label styles */
+  .hover-label {
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  
+  .icon-link:hover .hover-label {
+    opacity: 1;
+  }
+  

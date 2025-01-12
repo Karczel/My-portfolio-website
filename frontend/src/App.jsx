@@ -32,6 +32,8 @@ function App() {
     illustration_tags: `${import.meta.env.VITE_API_URL}/illustration_tags/`,
     repository_tags: `${import.meta.env.VITE_API_URL}/repository_tags/`,
     video_tags: `${import.meta.env.VITE_API_URL}/video_tags/`,
+    skill_tags: `${import.meta.env.VITE_API_URL}/skill_tags/`,
+
   };
 
   const fetchData = async () => {
@@ -49,6 +51,7 @@ function App() {
         return acc;
       }, {});
 
+      console.log(newData);
       setData(newData); // Update state with all fetched data
 
     } catch (err) {
@@ -85,7 +88,7 @@ function App() {
     boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.5)',
   }}>
     <div>
-      <Profile owners={data.owners} skills={data.skills} contacts={data.contacts}/>
+      <Profile owners={data.owners} skills={data.skills} tags={data.tags} skillTags={data.skill_tags} contacts={data.contacts}/>
       {/* Software Projects */}
     </div>
 

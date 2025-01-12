@@ -12,6 +12,10 @@ class SkillTag(models.Model):
     skill = models.ForeignKey(Skill, on_delete=models.CASCADE)
     tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
     certificate = models.FileField(blank=True, null=True)
+    class Meta:
+            constraints = [
+                models.UniqueConstraint(fields=['skill', 'tag'], name='unique_skill_tag')
+            ]
 
     def __str__(self):
         return f'{self.skill}, {self.tag}'

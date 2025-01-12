@@ -2,8 +2,9 @@ import React from 'react';
 import Avatar from '@mui/material/Avatar';
 import ProfileImage from '@/assets/default-avatar-url.svg';
 import PDFViewer from './pdfViewer';
+import LinkedIcon from './LinkedIcon';
 
-const Profile = ({ owners, skills, contacts }) => {
+const Profile = ({ owners, skills, tags, skillTags, contacts }) => {
   return (
     <div>
       {owners.results?.map((item) => (
@@ -61,17 +62,39 @@ const Profile = ({ owners, skills, contacts }) => {
           </div>
         ))}
 
+        <h1>Skills</h1>
         {skills.results?.map((item) => (
         <div key={item.id} style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start' }}>
-        
+        <ul style={{ padding: 0, listStyleType: 'none' }}>
+            {/* skills */}
+            <h2>{item.skill}</h2>
+            {/* corresponding skills tags */}
+            <ul>
+        {skillTags.results
+        ?.filter((tag) => tag.skill === item.id) // Match tags with the current skill ID
+          .map((tag) =>
+            tags.results
+              ?.filter((obj) => obj.id === tag.tag) // Match tags with the current tag ID
+              .map((obj) => (
+                <li key={obj.id}>{obj.content}</li>
+              ))
+            )}
+      </ul>
+        </ul>
         </div>
       ))}
 
-        {contacts.results?.map((item) => (
-        <div key={item.id} style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start' }}>
-        
-        </div>
-      ))}
+        {contacts.results?.length > 0 && (
+        <>
+            <h2>Contacts</h2>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+            {contacts.results.map((item) => (
+                <LinkedIcon key={item.id} item={item} />
+            ))}
+            </div>
+        </>
+        )}
+
       {owners.results?.map((item) => (
         <div key={item.id} style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start' }}>
         {item.location && (

@@ -11,6 +11,10 @@ class VideoTag(models.Model):
     """
     video = models.ForeignKey(Video, on_delete=models.CASCADE)
     tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
+    class Meta:
+            constraints = [
+                models.UniqueConstraint(fields=['video', 'tag'], name='unique_video_tag')
+            ]
 
     def __str__(self):
         return f'{self.video}, {self.tag}'

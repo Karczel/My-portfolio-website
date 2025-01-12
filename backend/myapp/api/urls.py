@@ -18,3 +18,5 @@ myapp_router.register(r'repository_images', RepositoryImageViewSet)
 myapp_router.register(r'illustration_tags', IllustrationTagViewSet)
 myapp_router.register(r'repository_tags', RepositoryTagViewSet)
 myapp_router.register(r'video_tags', VideoTagViewSet)
+myapp_router.register(r'skill_tags', SkillTagViewSet)
+
