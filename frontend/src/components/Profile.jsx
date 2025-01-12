@@ -3,18 +3,21 @@ import Avatar from '@mui/material/Avatar';
 import ProfileImage from '@/assets/default-avatar-url.svg';
 import PDFViewer from './pdfViewer';
 
-const Profile = ({ value }) => {
+const Profile = ({ owners, skills, contacts }) => {
   return (
     <div>
-      {value.results?.map((item) => (
-        <div key={item.id} style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start' }}>
+      {owners.results?.map((item) => (
+        <div key={item.id} style={{ 
+            display: 'flex', 
+            flexDirection: 'row', 
+            alignItems: 'flex-start', 
+            paddingTop: '30px', 
+            paddingLeft: '15px',}}>
         <Avatar
             alt={item.name || item.username || 'No name'}
             src={item.profile_image || ProfileImage}
             style={{ 
                 marginBottom: '10px', 
-                paddingTop: '10px', 
-                paddingLeft: '10px',
                 width: '100px',  // Increase size
                 height: '100px'
             }}
@@ -33,25 +36,13 @@ const Profile = ({ value }) => {
           </ul>
         </div>
       ))}
-      {value.results?.map((item) => (
+      {owners.results?.map((item) => (
         <div key={item.id} style={{ display: 'flex', flexDirection: 'column', marginLeft: '15px' }}>
           {item.about_me && (
             <div style={{ marginBottom: '30px' }}>
                 <h2>About Me</h2>
                 {item.about_me}
                 </div>
-          )}
-          {item.location && (
-            <div style={{ marginBottom: '30px' }}>
-                <h2>Resume</h2>
-                {item.location}
-                </div>
-          )}
-          {item.resume && (
-            <div style={{ marginBottom: '30px' }}>
-                <h2>Resume</h2>
-                <PDFViewer pdfUrl={item.resume} />
-            </div>
           )}
           {item.requirements && (
             <div style={{ marginBottom: '30px' }}>
@@ -61,8 +52,36 @@ const Profile = ({ value }) => {
             ))}
           </div>
           )}
+          {item.resume && (
+            <div style={{ marginBottom: '30px' }}>
+                <h2>Resume</h2>
+                <PDFViewer pdfUrl={item.resume} />
+            </div>
+          )}
           </div>
         ))}
+
+        {skills.results?.map((item) => (
+        <div key={item.id} style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start' }}>
+        
+        </div>
+      ))}
+
+        {contacts.results?.map((item) => (
+        <div key={item.id} style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start' }}>
+        
+        </div>
+      ))}
+      {owners.results?.map((item) => (
+        <div key={item.id} style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start' }}>
+        {item.location && (
+            <div style={{ marginBottom: '30px' }}>
+                <h2>Location</h2>
+                {item.location}
+                </div>
+          )}
+        </div>
+      ))}
     </div>
   );
 };

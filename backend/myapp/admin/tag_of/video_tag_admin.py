@@ -5,4 +5,5 @@ class VideoTagAdmin(admin.ModelAdmin):
     """
     Admin configuration for the VideoTag model.
     """
-    search_fields = ['name']
+    list_display = ['video', 'tag']
+    search_fields = ['video', 'tag']
