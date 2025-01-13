@@ -90,7 +90,7 @@ function App() {
     <div>
       <Profile owners={data.owners} skills={data.skills} tags={data.tags} skillTags={data.skill_tags} contacts={data.contacts}/>
       {/* Software Projects(Repository) */}
-
+      
       {/* Arts */}
 
       {/* Activities */}
