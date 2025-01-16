@@ -1,2 +1,2 @@
-from .repository_image import RepositoryImageAdmin
-from .activity_image import ActivityImageAdmin
+from .repository_image_admin import RepositoryImageAdmin
+from .activity_image_admin import ActivityImageAdmin

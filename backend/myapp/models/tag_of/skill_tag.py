@@ -2,19 +2,20 @@
 
 from django.db import models
 
-from myapp.models import Video, Tag
+from myapp.models import Skill, Tag
 
 
-class VideoTag(models.Model):
+class SkillTag(models.Model):
     """
     Represents tags of Videos that is part of the Owner's portfolio.
     """
-    video = models.ForeignKey(Video, on_delete=models.CASCADE)
+    skill = models.ForeignKey(Skill, on_delete=models.CASCADE)
     tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
+    certificate = models.FileField(blank=True, null=True)
     class Meta:
             constraints = [
-                models.UniqueConstraint(fields=['video', 'tag'], name='unique_video_tag')
+                models.UniqueConstraint(fields=['skill', 'tag'], name='unique_skill_tag')
             ]
 
     def __str__(self):
-        return f'{self.video}, {self.tag}'
+        return f'{self.skill}, {self.tag}'
